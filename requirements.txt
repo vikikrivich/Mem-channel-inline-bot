@@ -2,3 +2,4 @@ aiogram
 telethon
 supabase
 python-dotenv
+aiohttp-socks

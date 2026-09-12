@@ -1,13 +1,14 @@
 import asyncio
 import re
 from aiogram import Bot
+from aiogram.client.session.aiohttp import AiohttpSession
 from aiogram.exceptions import TelegramBadRequest, TelegramRetryAfter
 from supabase import create_client, Client
 
 from utils.logger import logger
 from utils.settings import settings
 
-START_MSG_ID = 1
+START_MSG_ID = 2000
 END_MSG_ID = 3000  # укажите номер последнего поста в канале
 
 
@@ -30,7 +31,12 @@ async def run_parser():
         logger.error("Укажите CHANNEL_ID и MY_TELEGRAM_ID в .env файле")
         return
 
-    bot = Bot(token=settings.TOKEN)
+    # Настройка прокси для сессии aiogram
+    session = None
+    if getattr(settings, "PROXY_URL", None):
+        session = AiohttpSession(proxy=settings.PROXY_URL)
+
+    bot = Bot(token=settings.TOKEN, session=session)
     supabase: Client = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
 
     logger.info(f"Старт парсинга сообщений с {START_MSG_ID} по {END_MSG_ID}...")

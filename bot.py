@@ -1,5 +1,6 @@
 import asyncio
 from aiogram import Bot, Dispatcher, types
+from aiogram.client.session.aiohttp import AiohttpSession
 from aiogram.filters.command import Command
 from aiogram.types import InlineQuery, InlineQueryResultCachedPhoto
 from supabase import create_client, Client
@@ -12,7 +13,13 @@ from utils.settings import settings
 
 async def main():
     settings.load_from_dotenv()
-    bot = Bot(token=settings.TOKEN)
+
+    # Настройка прокси для сессии aiogram
+    session = None
+    if getattr(settings, "PROXY_URL", None):
+        session = AiohttpSession(proxy=settings.PROXY_URL)
+
+    bot = Bot(token=settings.TOKEN, session=session)
     dp = Dispatcher()
 
     supabase: Client = create_client(settings.SUPABASE_URL, settings.SUPABASE_KEY)
