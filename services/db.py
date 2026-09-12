@@ -1,7 +1,6 @@
 import re
 from supabase import Client
 
-# Стоп-слова можно не фильтровать строго, но убрать мусор и спецсимволы стоит
 PUNCTUATION_REGEX = re.compile(r"[^\w\s]", re.UNICODE)
 
 
