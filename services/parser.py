@@ -7,13 +7,8 @@ from supabase import create_client, Client
 from utils.logger import logger
 from utils.settings import settings
 
-STOP_WORDS = {
-    "и", "а", "но", "в", "во", "на", "с", "со", "к", "по", "у",
-    "о", "об", "за", "из", "до", "от", "для", "не", "ни", "то", "же"
-}
-
 START_MSG_ID = 1
-END_MSG_ID = 300  # укажите номер последнего поста в канале
+END_MSG_ID = 15  # укажите номер последнего поста в канале
 
 
 def extract_tags(text: str) -> list[str]:
@@ -21,7 +16,7 @@ def extract_tags(text: str) -> list[str]:
     if not text:
         return []
     words = re.findall(r"[a-zA-Zа-яА-ЯёЁ0-9]+", text.lower())
-    return list({w for w in words if w not in STOP_WORDS and len(w) > 1})
+    return list({w for w in words if len(w) > 1})
 
 
 async def run_parser():
