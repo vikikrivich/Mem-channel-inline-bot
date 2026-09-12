@@ -8,7 +8,7 @@ from utils.logger import logger
 from utils.settings import settings
 
 START_MSG_ID = 1
-END_MSG_ID = 15  # укажите номер последнего поста в канале
+END_MSG_ID = 3000  # укажите номер последнего поста в канале
 
 
 def extract_tags(text: str) -> list[str]:
