@@ -36,7 +36,7 @@ class BaseSettings:
                     'SUPABASE_KEY=\n'
                     'CHANNEL_ID=\n'
                     'MY_TELEGRAM_ID=\n'
-                    'PROXY_URL='\n
+                    'PROXY_URL=\n'
                 )
 
         self.TOKEN = os.environ.get('TOKEN')
