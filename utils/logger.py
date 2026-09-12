@@ -1,7 +1,7 @@
 # https://stackoverflow.com/questions/16929639/ensuring-python-logging-in-multiple-threads-is-thread-safe
 
 import logging
-from settings import settings
+from utils.settings import settings
 
 class Colors:
     """Console Colors"""

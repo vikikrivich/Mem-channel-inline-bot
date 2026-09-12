@@ -1,3 +1,4 @@
 aiogram
-APScheduler
-python-decouple
+telethon
+supabase
+python-dotenv
