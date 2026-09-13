@@ -33,7 +33,7 @@ async def main():
     async def cmd_start(message: types.Message):
         await message.answer(
             "Привет! Бот активен и следит за каналом.\n"
-            "Ищи мемы в любом чате через `@test_vikikrivich_bot <слово>`."
+            "Ищи мемы в любом чате через ```@mem_find_bot <ключевое слово>```."
         )
 
     @dp.inline_query()
