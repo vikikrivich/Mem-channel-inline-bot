@@ -85,8 +85,7 @@ async def main():
         results = [
             InlineQueryResultCachedPhoto(
                 id=str(item["id"]),
-                photo_file_id=item["photo_file_id"],
-                caption=item.get("caption") or ""
+                photo_file_id=item["photo_file_id"]
             )
             for item in items[:50]
         ]
